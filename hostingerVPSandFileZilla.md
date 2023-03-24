@@ -1,8 +1,4 @@
-# HostingerVPS
-
-# Setting up hostinger VPS and FileZilla
-
-
+# Setting up hostinger VPS ( Ubuntu 22 ) and FileZilla
  
 \[yash@fedora ~\]$ ssh-keygen -R 147.162.228.118 
 \# Host 147.162.228.118 found: line 1
@@ -313,3 +309,7 @@ connected to FileZilla Successfully
 
  
 \[yash@fedora ~\]$
+
+
+
+
