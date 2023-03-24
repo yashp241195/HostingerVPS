@@ -1,6 +1,6 @@
 # HostingerVPS
 
-# Setting up hostinger VPS
+# Setting up hostinger VPS and FileZilla
 
 
  
