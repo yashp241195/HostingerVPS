@@ -260,6 +260,7 @@ SHA256:eGzQkZhRFJBNHyueoOi9t/JlVxd7oz/7x1OghOoacEU yash@fedora
 
 The key's randomart image is:
 
+```
 +---\[RSA 3072\]----+
 |  .=.o.oE.       |
 |  . o.==..       |
@@ -271,7 +272,7 @@ The key's randomart image is:
 |   ...o.o     .oo|
 |   .+oo.       oB|
 +----\[SHA256\]-----+
-
+```
  
 \[yash@fedora ~\]$ 
 
