@@ -159,10 +159,24 @@ Virtual Host	Domains	Actions
 2/SSL
 
 SSL Private Key & Certificate
-Private Key File	/usr/local/lsws/conf/Example/private.key
-Certificate File	/usr/local/lsws/conf/Example/certificate.crt
-Chained Certificate /usr/local/lsws/conf/Example/ca_bundle.crt
-CA Certificate Path	/usr/local/lsws/conf/Example/ca_bundle.crt
-CA Certificate File	/usr/local/lsws/conf/Example/ca_bundle.crt
+Private Key File	/usr/local/lsws/conf/cert/Example/private.key
+Certificate File	/usr/local/lsws/conf/cert/Example/certificate.crt
+Chained Certificate Yes
+CA Certificate Path	/usr/local/lsws/conf/cert/Example/ca_bundle.crt
+CA Certificate File	/usr/local/lsws/conf/cert/Example/ca_bundle.crt
 
 Upload SSL certificate via Filzilla at the location /usr/local/lsws/conf/Example/private.key
+
+Adding rule for auto redirect to HTTPS (SSL enabled) instead of SSL
+
+Virtual Host Example > Rewrite
+
+Rewrite Control
+Enable Rewrite	Yes
+Auto Load from .htaccess	Yes
+Log Level	0
+
+Rewrite Rules
+rewriteCond %{HTTPS} !on
+rewriteCond %{HTTP:X-Forwarded-Proto} !https
+rewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
