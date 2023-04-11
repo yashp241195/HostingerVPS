@@ -180,3 +180,61 @@ Rewrite Rules
 rewriteCond %{HTTPS} !on
 rewriteCond %{HTTP:X-Forwarded-Proto} !https
 rewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+
+
+
+
+
+
+Installing Python
+
+
+apt-get update
+apt-get install build-essential
+apt-get install python3-dev
+
+
+curl -O http://www.litespeedtech.com/packages/lsapi/wsgi-lsapi-2.1.tgz
+tar xf wsgi-lsapi-2.1.tgz
+cd wsgi-lsapi-2.1
+python3 ./configure.py
+make
+cp lswsgi /usr/local/lsws/fcgi-bin/
+
+sudo apt-get install python3-pip
+pip3 install virtualenv
+virtualenv -p python3 --system-site-packages /usr/local/lsws/Example4/html
+
+PYTHONPATH=/usr/local/lsws/Example4/html/lib/python3.10:/usr/local/lsws/Example4/html/demo
+LS_PYTHONBIN=/usr/local/lsws/Example4/html/bin/python
+
+virtualenv /usr/local/lsws/Example4/html
+source /usr/local/lsws/Example4/html/bin/activate
+
+pip3 install flask
+
+vi /usr/local/lsws/Example4/html/demo/demo/app/__init__.py
+
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello Flask!"
+
+vi /usr/local/lsws/Example4/html/demo/demo/wsgi.py
+
+#!/usr/bin/env python
+import sys
+
+sys.path.insert(0, '/usr/local/lsws/Example4/html/demo')
+
+from app import app as application
+
+
+chown -R nobody:nogroup /usr/local/lsws/Example4/html/demo
+
+For free SSL you can use Cloudflare as well
+
+
+
