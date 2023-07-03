@@ -9,3 +9,4 @@
   b. Custom Email and Email forwarding : https://www.youtube.com/watch?v=nNGcvz1Sc_8&t=272s&ab_channel=IdeaSpot 
 
 4. use myconfig.tar.gz to load config automatically
+5. Python require reboot because it runs detached from Openlitespeed
